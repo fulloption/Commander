@@ -8,10 +8,10 @@ namespace COMMANDER.Data
         {
             var command = new List<Command>
             {
-                 new Command{id=0 ,HowTo="Boil an 1",Line="Boil 1",Platform="Kettle & 1"},
-                 new Command{id=1 ,HowTo="Boil an 2",Line="Boil 2",Platform="Kettle & 2"},
-                 new Command{id=2 ,HowTo="Boil an 3",Line="Boil 3",Platform="Kettle & 3"},
-                 new Command{id=3 ,HowTo="Boil an 4",Line="Boil 4",Platform="Kettle & 4"},
+                new Command{id=0 ,HowTo="Boil an 1",Line="Boil 1",Platform="Kettle & 1"},
+                new Command{id=1 ,HowTo="Boil an 2",Line="Boil 2",Platform="Kettle & 2"},
+                new Command{id=2 ,HowTo="Boil an 3",Line="Boil 3",Platform="Kettle & 3"},
+                new Command{id=3 ,HowTo="Boil an 4",Line="Boil 4",Platform="Kettle & 4"}
             };
             return command;
         }
