@@ -14,7 +14,6 @@ builder.Services.AddDbContext<CommanderContext>(
     opt => opt.UseNpgsql(builder.Configuration.GetConnectionString("CommanderContext")));
 
 
-
 var app = builder.Build();
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
