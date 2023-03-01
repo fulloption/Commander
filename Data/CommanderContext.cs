@@ -14,10 +14,9 @@ namespace COMMANDER.Data
 
         public DbSet<Command> Commands { get; set; }
         
-        protected override void OnModelCreating(ModelBuilder builder)
+         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            base.OnModelCreating(builder);
-            builder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
+            modelBuilder.Entity<Command>().ToTable("Command");
         }
     }
 }

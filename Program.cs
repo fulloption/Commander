@@ -11,10 +11,11 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<ICommanderRepo,MockCommanderRepo>();
 builder.Services.AddDbContext<CommanderContext>(
-    opt => opt.UseNpgsql(
-        builder.Configuration.GetConnectionString("CommanderConnection")));
-var app = builder.Build();
+    opt => opt.UseNpgsql(builder.Configuration.GetConnectionString("CommanderContext")));
 
+
+
+var app = builder.Build();
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
@@ -25,6 +26,17 @@ if (app.Environment.IsDevelopment())
 // app.UseHttpsRedirection();
 
 // app.UseAuthorization();
+
+using (var scope = app.Services.CreateScope())
+{
+    var services = scope.ServiceProvider;
+
+    var context = services.GetRequiredService<CommanderContext>();
+    context.Database.EnsureCreated();
+    // DbInitializer.Initialize(context);
+}
+
+
 
 app.MapControllers();
 

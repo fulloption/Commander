@@ -1,5 +1,6 @@
 namespace COMMANDER.Models
 {
+    // [System.ComponentModel.DataAnnotations.Schema.Table("Command")]
     public class Command
     {
         public int id{get;set;}
