@@ -17,7 +17,7 @@ namespace Commander.Migrations
                 {
                     id = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    HowTo = table.Column<string>(type: "text", nullable: false),
+                    HowTo = table.Column<string>(type: "character varying(250)", maxLength: 250, nullable: false),
                     Line = table.Column<string>(type: "text", nullable: false),
                     Platform = table.Column<string>(type: "text", nullable: false)
                 },

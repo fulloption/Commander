@@ -31,7 +31,8 @@ namespace Commander.Migrations
 
                     b.Property<string>("HowTo")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasMaxLength(250)
+                        .HasColumnType("character varying(250)");
 
                     b.Property<string>("Line")
                         .IsRequired()

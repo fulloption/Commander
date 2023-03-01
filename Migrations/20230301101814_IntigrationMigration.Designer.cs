@@ -11,7 +11,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Commander.Migrations
 {
     [DbContext(typeof(CommanderContext))]
-    [Migration("20230301092925_IntigrationMigration")]
+    [Migration("20230301101814_IntigrationMigration")]
     partial class IntigrationMigration
     {
         /// <inheritdoc />
@@ -34,7 +34,8 @@ namespace Commander.Migrations
 
                     b.Property<string>("HowTo")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasMaxLength(250)
+                        .HasColumnType("character varying(250)");
 
                     b.Property<string>("Line")
                         .IsRequired()
