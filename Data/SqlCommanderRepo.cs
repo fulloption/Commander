@@ -24,6 +24,21 @@ namespace COMMANDER.Data
         {
             return _commanderContext.Commands.FirstOrDefault(p => p.id == id);
         }
+
+        public bool SaveChange()
+        {
+            return (_commanderContext.SaveChanges() >= 0);
+        }
+
+        public void CreateCommand(Command command)
+        {
+            if(command == null){
+                throw new ArgumentException(nameof(command));
+            }
+            _commanderContext.Commands.Add(command);
+        }
+
+        
     }
 
 }

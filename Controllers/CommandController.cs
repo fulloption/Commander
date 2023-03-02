@@ -24,11 +24,11 @@ namespace COMMANDER.Controllers
         
         // get api/Command
         [HttpGet]
-        public ActionResult<IEnumerable<Command>> GetAllCommander()
+        public ActionResult<IEnumerable<CommandReadDto>> GetAllCommander()
         {
             var commandItem = _repository.GetAllCommands();
 
-            return Ok(commandItem);
+            return Ok(_mapper.Map<IEnumerable<CommandReadDto>>(commandItem));
         }
 
 
@@ -42,6 +42,16 @@ namespace COMMANDER.Controllers
                 return Ok(_mapper.Map<CommandReadDto>(commandItem));
             }
             return NotFound();
+        }
+
+        //POST api/command/
+        [HttpPost]
+        public ActionResult <CommandReadDto> CreateCommand(CommandCreateDto cmdCreateDto)
+        {
+            var commandModel = _mapper.Map<Command>(cmdCreateDto);
+            _repository.CreateCommand(commandModel);
+            _repository.SaveChange();
+            return Ok(commandModel);   
         }
     }
 }
