@@ -9,9 +9,9 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-builder.Services.AddScoped<ICommanderRepo,MockCommanderRepo>();
 builder.Services.AddDbContext<CommanderContext>(
     opt => opt.UseNpgsql(builder.Configuration.GetConnectionString("CommanderContext")));
+builder.Services.AddScoped<ICommanderRepo,SqlCommanderRepo>();// Mapping Interface class to business class
 
 
 var app = builder.Build();

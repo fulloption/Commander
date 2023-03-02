@@ -4,6 +4,11 @@ namespace COMMANDER.Data
 {
     public class MockCommanderRepo : ICommanderRepo
     {
+        public IEnumerable<Command> GetAllCommands()
+        {
+            throw new NotImplementedException();
+        }
+
         public IEnumerable<Command> GetAppCommands()
         {
             var command = new List<Command>
