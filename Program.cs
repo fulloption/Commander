@@ -12,7 +12,7 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<CommanderContext>(
     opt => opt.UseNpgsql(builder.Configuration.GetConnectionString("CommanderContext")));
 builder.Services.AddScoped<ICommanderRepo,SqlCommanderRepo>();// Mapping Interface class to service class
-builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());//add service automapper
 
 
 var app = builder.Build();
