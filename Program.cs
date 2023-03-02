@@ -11,7 +11,8 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<CommanderContext>(
     opt => opt.UseNpgsql(builder.Configuration.GetConnectionString("CommanderContext")));
-builder.Services.AddScoped<ICommanderRepo,SqlCommanderRepo>();// Mapping Interface class to business class
+builder.Services.AddScoped<ICommanderRepo,SqlCommanderRepo>();// Mapping Interface class to service class
+builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
 
 var app = builder.Build();
