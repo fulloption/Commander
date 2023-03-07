@@ -14,7 +14,6 @@ builder.Services.AddDbContext<CommanderContext>(
 builder.Services.AddScoped<ICommanderRepo,SqlCommanderRepo>();// Mapping Interface class to service class
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());//add service automapper
 
-
 var app = builder.Build();
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
@@ -27,17 +26,12 @@ if (app.Environment.IsDevelopment())
 
 // app.UseAuthorization();
 
-using (var scope = app.Services.CreateScope())
-{
+using (var scope = app.Services.CreateScope()){
     var services = scope.ServiceProvider;
-
     var context = services.GetRequiredService<CommanderContext>();
     context.Database.EnsureCreated();
     // DbInitializer.Initialize(context);
 }
 
-
-
 app.MapControllers();
-
 app.Run();

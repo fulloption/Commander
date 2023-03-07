@@ -15,10 +15,6 @@ namespace COMMANDER.Data
             return _commanderContext.Commands.ToList();
         }
 
-        public IEnumerable<Command> GetAppCommands()
-        {
-            throw new NotImplementedException();
-        }
 
         public Command GetCommandById(int id)
         {
@@ -38,7 +34,19 @@ namespace COMMANDER.Data
             _commanderContext.Commands.Add(command);
         }
 
-        
+        public void UpdateCommand(Command cmd)
+        {
+            //Nothing
+        }
+
+        public void DeleteCommand(Command cmd)
+        {
+            if(cmd == null)
+            {
+                throw new ArgumentNullException(nameof(cmd));
+            }
+            _commanderContext.Commands.Remove(cmd);
+        }
     }
 
 }
