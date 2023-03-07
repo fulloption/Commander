@@ -37,4 +37,5 @@ using (var scope = app.Services.CreateScope()){
 }
 
 app.MapControllers();
+app.UseRouting();
 app.Run();
