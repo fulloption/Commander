@@ -1,5 +1,6 @@
 using COMMANDER.Data;
 using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,7 +14,9 @@ builder.Services.AddDbContext<CommanderContext>(
     opt => opt.UseNpgsql(builder.Configuration.GetConnectionString("CommanderContext")));
 builder.Services.AddScoped<ICommanderRepo,SqlCommanderRepo>();// Mapping Interface class to service class
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());//add service automapper
-
+builder.Services.AddControllers().AddNewtonsoftJson(s => {
+                s.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
+            });
 var app = builder.Build();
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
