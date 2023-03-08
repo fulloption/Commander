@@ -14,6 +14,7 @@ builder.Services.AddDbContext<CommanderContext>(
     opt => opt.UseNpgsql(builder.Configuration.GetConnectionString("CommanderContext")));
 builder.Services.AddScoped<ICommanderRepo,SqlCommanderRepo>();// Mapping Interface class to service class
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());//add service automapper
+builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 builder.Services.AddControllers().AddNewtonsoftJson(s => {
                 s.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
             });
