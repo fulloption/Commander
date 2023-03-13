@@ -15,7 +15,6 @@ namespace COMMANDER.Data
             return _commanderContext.Commands.ToList();
         }
 
-
         public Command GetCommandById(int id)
         {
             return _commanderContext.Commands.FirstOrDefault(p => p.id == id);
@@ -48,5 +47,4 @@ namespace COMMANDER.Data
             _commanderContext.Commands.Remove(cmd);
         }
     }
-
 }

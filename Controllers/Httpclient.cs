@@ -11,6 +11,7 @@ namespace COMMANDER.Controllers
         {
             this.httpContextAccessor = httpContextAccessor;
         }
+
         // GET: api/<ValuesController>
         [HttpGet]
         public IEnumerable<string> Get()
@@ -18,6 +19,5 @@ namespace COMMANDER.Controllers
             string clientIpAddress = this.httpContextAccessor.HttpContext.Connection.RemoteIpAddress.ToString();
             return new string[] { "clientIpAddress ", clientIpAddress };
         }
-
     }
 }
